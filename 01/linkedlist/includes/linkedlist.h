@@ -13,6 +13,7 @@ typedef struct LinkedListType
 	ListNode headerNode;		// 헤더 노드(Header Node)
 } LinkedList;
 
+//
 LinkedList* createLinkedList();
 int addLLElement(LinkedList* pList, int position, ListNode element);
 int removeLLElement(LinkedList* pList, int position);
