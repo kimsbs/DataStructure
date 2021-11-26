@@ -7,18 +7,18 @@ int addDLElement(DoublyList* pList, int position, DoublyListNode element)
   DoublyListNode *next;
   DoublyListNode *prev;
 
-  //¿¹¿ÜÃ³¸®
+  //ï¿½ï¿½ï¿½ï¿½Ã³ï¿½ï¿½
   if (position < 0 ||
       position > pList->currentElementCount)
       return (FALSE);
   
-  //³ëµå¸¦ »õ·Î ÇÒ´ç
+  //ï¿½ï¿½å¸¦ ï¿½ï¿½ï¿½ï¿½ ï¿½Ò´ï¿½
   new_node = (DoublyListNode *)malloc(sizeof(DoublyListNode));
   new_node->data = element.data;
   new_node->pLLink = 0;
   new_node->pRLink = 0;
 
-  //¸®½ºÆ®°¡ ºñ¾îÀÖÀ»°æ¿ì,
+  //ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,
   if  (pList->currentElementCount == 0)
   {
     new_node->pRLink = pList->headerNode.pRLink;
@@ -28,7 +28,7 @@ int addDLElement(DoublyList* pList, int position, DoublyListNode element)
   }
   else
   {
-    //¸®½ºÆ®°¡ ºñ¾îÀÖÁö ¾ÊÀº°æ¿ì, positionÀÌ 0ÀÌ¾îµµ getDLElemetÇÑ ÈÄ left¸¦ º¸¸é Çìµå°¡ÀÖ¾î¼­ °¡´É.
+    //ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, positionï¿½ï¿½ 0ï¿½Ì¾îµµ getDLElemetï¿½ï¿½ ï¿½ï¿½ leftï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½å°¡ï¿½Ö¾î¼­ ï¿½ï¿½ï¿½ï¿½.
     next = getDLElement(pList, position);
     prev = next->pLLink;
     new_node->pLLink = prev;
