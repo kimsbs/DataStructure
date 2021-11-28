@@ -8,7 +8,6 @@ FILE = createLinkedStack\
 		popLS\
 		peekLS\
 		deleteLinkedStack\
-		isLinkedStackFull\
 		isLinkedStackEmpty\
 		main
 
