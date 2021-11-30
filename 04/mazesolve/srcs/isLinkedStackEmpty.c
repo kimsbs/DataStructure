@@ -1,4 +1,4 @@
-#include "linkedstack.h"
+#include "mazesolve.h"
 
 int isLinkedStackEmpty(LinkedStack* pStack)
 {

@@ -1,4 +1,4 @@
-NAME = linkedstack
+NAME = mazesolve
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
@@ -6,9 +6,12 @@ RM = rm -rf
 FILE = createLinkedStack\
 		pushLS\
 		popLS\
-		peekLS\
 		deleteLinkedStack\
 		isLinkedStackEmpty\
+		ft_func\
+		ft_func2\
+		ft_map_read\
+		printMaze\
 		main
 
 INCS = ./includes

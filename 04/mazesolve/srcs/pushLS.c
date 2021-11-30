@@ -1,4 +1,4 @@
-#include "linkedstack.h"
+#include "mazesolve.h"
 
 int pushLS(LinkedStack* pStack, StackNode element)
 {
@@ -12,6 +12,5 @@ int pushLS(LinkedStack* pStack, StackNode element)
     node->data = element.data;
     node->pLink = pStack->pTopElement;
     pStack->pTopElement = node;
-    pStack->currentElementCount++;
     return(TRUE);    
 }

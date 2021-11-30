@@ -1,4 +1,4 @@
-#include "linkedstack.h"
+#include "mazesolve.h"
 
 void deleteLinkedStack(LinkedStack* pStack)
 {

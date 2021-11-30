@@ -1,4 +1,4 @@
-#include "linkedstack.h"
+#include "mazesolve.h"
 
 StackNode* popLS(LinkedStack* pStack)
 {
@@ -8,6 +8,5 @@ StackNode* popLS(LinkedStack* pStack)
         return(NULL);
     pop = pStack->pTopElement;
     pStack->pTopElement = pop->pLink;
-    pStack->currentElementCount--;
     return(pop);
 }

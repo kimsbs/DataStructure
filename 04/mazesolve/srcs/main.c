@@ -1,66 +1,19 @@
-#include "linkedstack.h"
+#include "mazesolve.h"
 
-void	showLS(LinkedStack *pStack)
+int		main(int argc, char **argv)
 {
-	StackNode *move;
-
-	if(!pStack)
-		return ;
-	move = pStack->pTopElement;
-	while(move)
+	LinkedStack *head;
+	if(argc != 2)
 	{
-		printf("%c ", move->data);
-		move = move->pLink;
+		printf("input : [./mazesolve] [map.ber]");
+		return (0);
 	}
-	printf("\n");
-}
+	head = createLinkedStack();
+	read_map(head, argv[1]);
 
-int		main(void)
-{
-	LinkedStack *stack;
-	StackNode *peek;
-	StackNode *pop;
-	StackNode tmp;
-	char data;
-	char c;
-
-	stack = createLinkedStack();
-	while(1)
-	{
-		printf("put Push pOp pEek Delete Show: ");
-		scanf(" %c", &c);
-		switch (c)
-		{
-		case 'P':
-			printf("put data : ");
-			scanf(" %c", &data);
-			tmp.data = data;
-			pushLS(stack, tmp);
-			break;
-		case 'O':
-			pop = popLS(stack);
-			if(pop)
-			{
-				printf("%c\n", pop->data);
-				free(pop);
-			}
-			break;
-		case 'E':
-			peek = peekLS(stack);
-			if(peek)
-				printf("%c\n", peek->data);
-			break;
-		case 'S':
-			showLS(stack);
-			break;
-		case 'D':
-			deleteLinkedStack(stack);
-			system("leaks linkedstack");
-			return (0);
-			break;
-		default:
-			break;
-		}
-	}
+	printf("hor : %d, ver : %d\n", head->hor, head->ver);
+	printf("player y : %d, player x : %d\n", head->player[0], head->player[1]);
+	printf("end y : %d, end x : %d\n", head->end[0], head->end[1]);
+	printMaze(head->map);
 	return (0);
 }
