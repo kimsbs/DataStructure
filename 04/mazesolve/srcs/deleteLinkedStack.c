@@ -3,6 +3,7 @@
 void deleteLinkedStack(LinkedStack* pStack)
 {
     StackNode *pop;
+    int move = 0;
 
     if(!pStack)
         return ;
@@ -12,5 +13,11 @@ void deleteLinkedStack(LinkedStack* pStack)
         free(pop);
         pop = popLS(pStack);
     }
+    while(pStack->map[move])
+    {
+        free(pStack->map[move]);
+        move++;
+    }
+    free(pStack->map[move]);
     free(pStack);
 }
