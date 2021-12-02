@@ -24,10 +24,10 @@ typedef struct LinkedStackType
 } LinkedStack;
 
 LinkedStack* createLinkedStack();
-int pushLS(LinkedStack* pStack, StackNode element);
-int popLS(LinkedStack* pStack);
-void deleteLinkedStack(LinkedStack* pStack);
-int isLinkedStackEmpty(LinkedStack* pStack);
+int 	pushLS(LinkedStack* pStack, StackNode element);
+int 	popLS(LinkedStack* pStack);
+void 	deleteLinkedStack(LinkedStack* pStack);
+int 	isLinkedStackEmpty(LinkedStack* pStack);
 void	find_path(LinkedStack* pStack);
 void	showPath(LinkedStack* pStack);
 void	printMaze(char **map);
