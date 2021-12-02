@@ -25,12 +25,19 @@ typedef struct LinkedStackType
 
 LinkedStack* createLinkedStack();
 int pushLS(LinkedStack* pStack, StackNode element);
-StackNode* popLS(LinkedStack* pStack);
+int popLS(LinkedStack* pStack);
 void deleteLinkedStack(LinkedStack* pStack);
 int isLinkedStackEmpty(LinkedStack* pStack);
 void	find_path(LinkedStack* pStack);
 void	showPath(LinkedStack* pStack);
 void	printMaze(char **map);
+
+int     can_move(LinkedStack* pStack);
+int     is_end(LinkedStack* pStack);
+void    move_down(LinkedStack* pStack);
+void    move_up(LinkedStack* pStack);
+void    move_left(LinkedStack* pStack);
+void    move_right(LinkedStack* pStack);
 
 int		ft_strlen(const char *s);
 char	*ft_strdup(const char *s1);

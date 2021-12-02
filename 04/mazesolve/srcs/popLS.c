@@ -1,12 +1,13 @@
 #include "mazesolve.h"
 
-StackNode* popLS(LinkedStack* pStack)
+int popLS(LinkedStack* pStack)
 {
     StackNode *pop;
 
     if(!pStack || isLinkedStackEmpty(pStack))
-        return(NULL);
+        return (FALSE);
     pop = pStack->pTopElement;
     pStack->pTopElement = pop->pLink;
-    return(pop);
+    free(pop);
+    return(TRUE);
 }

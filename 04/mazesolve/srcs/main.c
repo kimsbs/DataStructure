@@ -10,10 +10,10 @@ int		main(int argc, char **argv)
 	}
 	head = createLinkedStack();
 	read_map(head, argv[1]);
-
-	printf("hor : %d, ver : %d\n", head->hor, head->ver);
-	printf("player y : %d, player x : %d\n", head->player[0], head->player[1]);
-	printf("end y : %d, end x : %d\n", head->end[0], head->end[1]);
+	find_path(head);
+	showPath(head);
 	printMaze(head->map);
+	deleteLinkedStack(head);
+	//system("leaks mazesolve");
 	return (0);
 }

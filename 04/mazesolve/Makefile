@@ -12,6 +12,9 @@ FILE = createLinkedStack\
 		ft_func2\
 		ft_map_read\
 		printMaze\
+		showpath\
+		find_path\
+		move_direction\
 		main
 
 INCS = ./includes
