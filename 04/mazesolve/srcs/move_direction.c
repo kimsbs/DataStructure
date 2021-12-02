@@ -12,6 +12,9 @@ void    move_right(LinkedStack* pStack)
 {
     StackNode node;
     int x, y;
+
+    if(is_end(pStack))
+        return ;
     node.data = 'r';
     y = pStack->player[0];
     x = ++pStack->player[1];
@@ -32,6 +35,9 @@ void    move_left(LinkedStack* pStack)
 {
     StackNode node;
     int x, y;
+
+    if(is_end(pStack))
+        return ;
     node.data = 'l';
     y = pStack->player[0];
     x = --pStack->player[1];
@@ -50,8 +56,11 @@ void    move_left(LinkedStack* pStack)
 
 void    move_up(LinkedStack* pStack)
 {
-    int x, y;
     StackNode node;
+    int x, y;
+
+    if(is_end(pStack))
+        return ;
     node.data = 'u';
     y = --pStack->player[0];
     x = pStack->player[1];
@@ -72,6 +81,9 @@ void    move_down(LinkedStack* pStack)
 {
     StackNode node;
     int x, y;
+
+    if(is_end(pStack))
+        return ;
     node.data = 'd';
     y = ++pStack->player[0];
     x = pStack->player[1];

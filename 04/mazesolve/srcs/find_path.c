@@ -28,15 +28,7 @@ void	find_path(LinkedStack* pStack)
     if(is_end(pStack))
             return ;
     move_right(pStack);
-    if(is_end(pStack))
-        return ;
     move_left(pStack);
-    if(is_end(pStack))
-        return ;
     move_up(pStack);
-    if(is_end(pStack))
-        return ;
     move_down(pStack);
-    if(is_end(pStack))
-        return ;
 }
