@@ -22,15 +22,14 @@ void reverseStack(LinkedStack *pStack)
     //다음 단계 진행 위해 curr에 다음 노드의 주소를 넣어준다
     curr = next;
   }
-
   //헤드 노드의 링크를 원래 리스트의 마지막 노드와 연결한다(현재는 첫 노드)
   pStack->pTopElement = prev;
   
 }
 
-void	showPath(LinkedStack* pStack)
+void  showLS(LinkedStack* pStack)
 {
-    StackNode *node;
+  StackNode *node;
     if(!pStack)
         return ;
     reverseStack(pStack);
@@ -42,4 +41,18 @@ void	showPath(LinkedStack* pStack)
     }
     printf("\n");
     reverseStack(pStack);
+}
+
+void	showPath(LinkedStack* pStack)
+{
+    StackNode *node;
+    if(!pStack)
+        return ;
+    node = pStack->pTopElement;
+    while(node)
+    {
+        printf("%c ", node->data);
+        node = node->pLink;
+    }
+    printf("\n");
 }

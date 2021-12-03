@@ -15,6 +15,8 @@ typedef struct StackNodeType
 
 typedef struct LinkedStackType
 {
+	int cnt;
+	int max_move;
 	int	hor;
 	int	ver;
 	int player[2]; // 0 : y , 1 : x;
@@ -28,16 +30,17 @@ int 	pushLS(LinkedStack* pStack, StackNode element);
 int 	popLS(LinkedStack* pStack);
 void 	deleteLinkedStack(LinkedStack* pStack);
 int 	isLinkedStackEmpty(LinkedStack* pStack);
-void	find_path(LinkedStack* pStack);
+void	find_path(LinkedStack* pStack, LinkedStack* sol);
 void	showPath(LinkedStack* pStack);
 void	printMaze(char **map);
+void 	showLS(LinkedStack* pStack);
 
 int     can_move(LinkedStack* pStack);
 int     is_end(LinkedStack* pStack);
-void    move_down(LinkedStack* pStack);
-void    move_up(LinkedStack* pStack);
-void    move_left(LinkedStack* pStack);
-void    move_right(LinkedStack* pStack);
+void    move_down(LinkedStack* pStack, LinkedStack* sol);
+void    move_up(LinkedStack* pStack, LinkedStack* sol);
+void    move_left(LinkedStack* pStack, LinkedStack* sol);
+void    move_right(LinkedStack* pStack, LinkedStack* sol);
 
 int		ft_strlen(const char *s);
 char	*ft_strdup(const char *s1);

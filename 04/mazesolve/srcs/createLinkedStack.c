@@ -14,6 +14,7 @@ LinkedStack* createLinkedStack()
     stack->player[1] = 0;
     stack->end[0] = 0;
     stack->end[1] = 0;
+    stack->cnt = 0;
     stack->map = NULL;
     return(stack);
 }

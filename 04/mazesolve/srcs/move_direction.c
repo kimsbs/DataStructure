@@ -4,98 +4,66 @@ void    dot_visited(LinkedStack* pStack, int x, int y, int flag)
 {
     if(flag && pStack->map[y][x] != 'E')
         pStack->map[y][x] = '2';
-    if(!flag)
+    if(!flag && pStack->map[y][x] != 'E')
         pStack->map[y][x] = '0';
 }
 
-void    move_right(LinkedStack* pStack)
+void    same_func(LinkedStack* pStack, LinkedStack* sol, StackNode node, int x, int y)
+{
+    if (can_move(pStack))
+    {
+        dot_visited(pStack, x, y, 1);
+        pushLS(pStack, node);
+        find_path(pStack, sol);
+        popLS(pStack);
+        dot_visited(pStack, x, y, 0);
+    }
+}
+
+void    move_right(LinkedStack* pStack, LinkedStack* sol)
 {
     StackNode node;
     int x, y;
 
-    if(is_end(pStack))
-        return ;
     node.data = 'r';
     y = pStack->player[0];
     x = ++pStack->player[1];
-    if (can_move(pStack))
-    {
-        dot_visited(pStack, x, y, 1);
-        pushLS(pStack, node);
-        find_path(pStack);
-        if(is_end(pStack))
-            return ;
-        popLS(pStack);
-        dot_visited(pStack, x, y, 0);
-    }
+    same_func(pStack, sol, node, x, y);
     pStack->player[1]--;
 }
 
-void    move_left(LinkedStack* pStack)
+void    move_left(LinkedStack* pStack, LinkedStack* sol)
 {
     StackNode node;
     int x, y;
 
-    if(is_end(pStack))
-        return ;
     node.data = 'l';
     y = pStack->player[0];
     x = --pStack->player[1];
-    if (can_move(pStack))
-    {
-        dot_visited(pStack, x, y, 1);
-        pushLS(pStack, node);
-        find_path(pStack);
-        if(is_end(pStack))
-            return ;
-        popLS(pStack);
-        dot_visited(pStack, x, y, 0);
-    }
+    same_func(pStack, sol, node, x, y);
     pStack->player[1]++;
 }
 
-void    move_up(LinkedStack* pStack)
+void    move_up(LinkedStack* pStack, LinkedStack* sol)
 {
     StackNode node;
     int x, y;
 
-    if(is_end(pStack))
-        return ;
     node.data = 'u';
     y = --pStack->player[0];
     x = pStack->player[1];
-    if (can_move(pStack))
-    {
-        dot_visited(pStack, x, y, 1);
-        pushLS(pStack, node);
-        find_path(pStack);
-        if(is_end(pStack))
-            return ;
-        popLS(pStack);
-        dot_visited(pStack, x, y, 0);
-    }
+    same_func(pStack, sol, node, x, y);
     pStack->player[0]++;
 }
 
-void    move_down(LinkedStack* pStack)
+void    move_down(LinkedStack* pStack, LinkedStack* sol)
 {
     StackNode node;
     int x, y;
 
-    if(is_end(pStack))
-        return ;
     node.data = 'd';
     y = ++pStack->player[0];
     x = pStack->player[1];
-    if (can_move(pStack))
-    {
-        dot_visited(pStack, x, y, 1);
-        pushLS(pStack, node);
-        find_path(pStack);
-        if(is_end(pStack))
-            return ;
-        popLS(pStack);
-        dot_visited(pStack, x, y, 0);
-    }
+    same_func(pStack, sol, node, x, y);
     pStack->player[0]--;
 }

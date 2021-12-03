@@ -23,12 +23,38 @@ int     is_end(LinkedStack* pStack)
     return(0);
 }
 
-void	find_path(LinkedStack* pStack)
+void    stack_cpy(LinkedStack* pStack , LinkedStack *sol)
+{
+    LinkedStack *tmp;
+    StackNode *move;
+    StackNode node;
+
+    if (pStack->max_move > pStack->cnt)
+    {
+        move = pStack->pTopElement;
+        pStack->max_move = pStack->cnt;
+        deleteLinkedStack(sol);
+        tmp = createLinkedStack(pStack);
+        while(move)
+        {
+            node.data = move->data;
+            pushLS(tmp, node);
+            move = move->pLink;
+        }
+        sol = tmp;
+    }
+    showLS(pStack);
+}
+
+void	find_path(LinkedStack* pStack, LinkedStack *sol)
 {
     if(is_end(pStack))
-            return ;
-    move_right(pStack);
-    move_left(pStack);
-    move_up(pStack);
-    move_down(pStack);
+    {
+        stack_cpy(pStack, sol);
+        return ;
+    }
+    move_right(pStack, sol);
+    move_left(pStack, sol);
+    move_up(pStack, sol);
+    move_down(pStack, sol);
 }

@@ -9,10 +9,13 @@ void deleteLinkedStack(LinkedStack* pStack)
     while(popLS(pStack))
     {
     }
-    while(pStack->map[move])
+    if(pStack->map)
     {
-        free(pStack->map[move]);
-        move++;
+        while(pStack->map[move])
+        {
+            free(pStack->map[move]);
+            move++;
+        }
     }
     free(pStack->map);
     free(pStack);

@@ -9,5 +9,6 @@ int popLS(LinkedStack* pStack)
     pop = pStack->pTopElement;
     pStack->pTopElement = pop->pLink;
     free(pop);
+    pStack->cnt--;
     return(TRUE);
 }
