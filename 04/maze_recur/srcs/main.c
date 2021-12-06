@@ -16,7 +16,7 @@ int		main(int argc, char **argv)
 	head->max_move = head->hor * head->ver;
 	find_path(head, sol);
 	printf("Shortcut : ");
-	showPath(sol);
+	showLS(sol);
 	printMaze(head->map);
 	deleteLinkedStack(head);
 	//system("leaks mazesolve");

@@ -42,17 +42,3 @@ void  showLS(LinkedStack* pStack)
     printf("\n");
     reverseStack(pStack);
 }
-
-void	showPath(LinkedStack* pStack)
-{
-    StackNode *node;
-    if(!pStack)
-        return ;
-    node = pStack->pTopElement;
-    while(node)
-    {
-        printf("%c ", node->data);
-        node = node->pLink;
-    }
-    printf("\n");
-}

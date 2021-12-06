@@ -41,6 +41,7 @@ void    stack_cpy(LinkedStack* pStack , LinkedStack *sol)
             pushLS(tmp, node);
             move = move->pLink;
         }
+        reverseStack(tmp);
         sol = tmp;
     }
     showLS(pStack);
