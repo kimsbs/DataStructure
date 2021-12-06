@@ -42,7 +42,7 @@ void	find_path(LinkedStack* pStack)
             push_elem(pStack, x, y + 1, 'd');
         else
             popLS(pStack);
-        // x, y 초기화.
+        // x, y 최신화.
         if(pStack->pTopElement)
         {
             x = pStack->pTopElement->x;
