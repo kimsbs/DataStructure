@@ -11,9 +11,8 @@ BinTreeNode* make_node(char data)
     return(dummy);
 }
 
-void dummy(void)
+BinTree* init(void)
 {
-    BinTree *tree;
     BinTreeNode *A = make_node('A');
     BinTreeNode *B = make_node('B');
     BinTreeNode *C = make_node('C');
@@ -27,9 +26,8 @@ void dummy(void)
     BinTreeNode *K = make_node('K');
     BinTreeNode *L = make_node('L');
     BinTreeNode *M = make_node('M');
-    BinTreeNode *root;
+    BinTree* tree = makeBinTree(A);
 
-    tree = makeBinTree(A);
     insertLeftChildNodeBT(D, H);
     insertRightChildNodeBT(D, I);
     insertLeftChildNodeBT(E, J);
@@ -42,6 +40,14 @@ void dummy(void)
     insertLeftChildNodeBT(C, F);
     insertLeftChildNodeBT(A, B);
     insertRightChildNodeBT(A, C);
+
+    return(tree);
+}
+
+void dummy(void)
+{
+    BinTree* tree = init();
+    BinTreeNode *root;
 
     root = getRootNodeBT(tree);
     
