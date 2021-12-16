@@ -58,7 +58,7 @@ int insertElementBST(BinSearchTree* pBinSearchTree, BinSearchTreeNode element)
     parent = searchBST(pBinSearchTree, new_node->key);
     if(parent->key == new_node->key)
     {
-        printf("key is already have\n");
+        printf("key is already exist\n");
         return (FALSE);
     }
     link_PC_BST(parent, new_node);
