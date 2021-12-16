@@ -16,26 +16,27 @@ static void delete_Two_child(BinSearchTree *pBinSearchTree, BinSearchTreeNode *r
     BinSearchTreeNode *parent;
 
     replace = RLlast(remove);
-    //====대체할 노드의 부모와 대체할 노드의 오른쪽 자식을 연결====
-    parent = replace->pParent;
-    if (parent != remove) //지울 노드가 대체할 노드의 부모가 아닌경우,
+    parent = replace->pParent; //대체할 노드의 부모.
+    if (parent != remove) //제거할 노드 != 대체할 노드의 부모
     {
+    //====대체할 노드의 부모와 대체할 노드의 자식을 연결=========
         if (replace->pRightChild)
             link_PC_BST(parent, replace->pRightChild);
         else
             parent->pLeftChild = NULL;
-    //=====대체할 노드의 부모 - 대체할 노드의 자식연결 종료==========
-        replace->pRightChild = remove->pRightChild; //제거할 노드가 대체할 노드의 부모일경우, right_child가 자신을 가르키게됨
+    //====대체할 노드의 부모 - 대체할 노드의 자식연결 종료=======
+        replace->pLeftChild = remove->pLeftChild;
+        replace->pRightChild = remove->pRightChild; //제거할 노드가 대체할 노드의 부모일경우, right_child가 자신을 가리키게됨
     }
     else//무한루프 방지
+    {
+        replace->pLeftChild = remove->pLeftChild;
         replace->pRightChild = NULL;
-    replace->pLeftChild = remove->pLeftChild;
-    
+    }
     if (remove != pBinSearchTree->pRootNode)
         link_PC_BST(remove->pParent, replace);
     else
         pBinSearchTree->pRootNode = replace;
-
     free(remove);
     remove = NULL;
 }
