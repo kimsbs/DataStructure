@@ -1,30 +1,36 @@
 #include "binsearchtree.h"
 
-BinSearchTreeNode *RLlast(BinSearchTreeNode *node)
+static BinSearchTreeNode *RLlast(BinSearchTreeNode *node)
 {
     BinSearchTreeNode *curr;
 
     curr = node->pRightChild;
     while (curr->pLeftChild)
-    {
         curr = curr->pLeftChild;
-    }
     return (curr);
 }
 
-void delete_Two_child(BinSearchTree *pBinSearchTree, BinSearchTreeNode *remove)
+static void delete_Two_child(BinSearchTree *pBinSearchTree, BinSearchTreeNode *remove)
 {
     BinSearchTreeNode *replace;
     BinSearchTreeNode *parent;
 
     replace = RLlast(remove);
+    //====대체할 노드의 부모와 대체할 노드의 오른쪽 자식을 연결====
     parent = replace->pParent;
-    if (replace->pRightChild)
-        link_PC_BST(parent, replace->pRightChild);
-    else
-        parent->pLeftChild = NULL;
+    if (parent != remove) //지울 노드가 대체할 노드의 부모가 아닌경우,
+    {
+        if (replace->pRightChild)
+            link_PC_BST(parent, replace->pRightChild);
+        else
+            parent->pLeftChild = NULL;
+    //=====대체할 노드의 부모 - 대체할 노드의 자식연결 종료==========
+        replace->pRightChild = remove->pRightChild; //제거할 노드가 대체할 노드의 부모일경우, right_child가 자신을 가르키게됨
+    }
+    else//무한루프 방지
+        replace->pRightChild = NULL;
     replace->pLeftChild = remove->pLeftChild;
-    replace->pRightChild = remove->pRightChild;
+    
     if (remove != pBinSearchTree->pRootNode)
         link_PC_BST(remove->pParent, replace);
     else
@@ -34,7 +40,7 @@ void delete_Two_child(BinSearchTree *pBinSearchTree, BinSearchTreeNode *remove)
     remove = NULL;
 }
 
-void delete_One_child(BinSearchTree *pBinSearchTree, BinSearchTreeNode *remove)
+static void delete_One_child(BinSearchTree *pBinSearchTree, BinSearchTreeNode *remove)
 {
     BinSearchTreeNode *parent;
     BinSearchTreeNode *child;
@@ -50,12 +56,12 @@ void delete_One_child(BinSearchTree *pBinSearchTree, BinSearchTreeNode *remove)
     }
     else
         pBinSearchTree->pRootNode = child;
-        
+
     free(remove);
     remove = NULL;
 }
 
-void delete_NO_child(BinSearchTree *pBinSearchTree, BinSearchTreeNode *remove)
+static void delete_NO_child(BinSearchTree *pBinSearchTree, BinSearchTreeNode *remove)
 {
     BinSearchTreeNode *parent;
 
@@ -64,7 +70,7 @@ void delete_NO_child(BinSearchTree *pBinSearchTree, BinSearchTreeNode *remove)
     else
     {
         parent = remove->pParent;
-        if(parent->pLeftChild == remove)
+        if (parent->pLeftChild == remove)
             parent->pLeftChild = NULL;
         else
             parent->pRightChild = NULL;
@@ -77,9 +83,9 @@ int deleteElementBST(BinSearchTree *pBinSearchTree, int key)
 {
     BinSearchTreeNode *remove;
 
-    if (!pBinSearchTree || pBinSearchTree->pRootNode == NULL)
+    if (!pBinSearchTree || !pBinSearchTree->pRootNode)
     {
-        printf("Tree is empty");
+        printf("Tree is empty\n");
         return (FALSE);
     }
     remove = searchBST(pBinSearchTree, key);

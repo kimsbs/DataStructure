@@ -44,7 +44,6 @@ void levelOrderTraversalBinTree(BinSearchTreeNode* pNode);
 //+@
 BinSearchTreeNode *createNode(BinSearchTreeNode element);
 void    link_PC_BST(BinSearchTreeNode *parent, BinSearchTreeNode *child);
-BinSearchTreeNode* RLlast(BinSearchTreeNode *node);
 
 //Basic
 BinSearchTree* createBinSearchTree();

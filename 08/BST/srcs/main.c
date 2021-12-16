@@ -15,15 +15,15 @@ void    loop(void)
         switch (number)
         {
         case 1:
-            printf("key : ");
-            scanf(" %d", &node.key);
-            printf("value : ");
-            scanf(" %c", &node.value);
+            printf("key : value = ");
+            getchar();
+            scanf("%d %c", &node.key, &node.value);
             insertElementBST(tree, node);
             break;
         case 2:
             printf("Remove key : ");
-            scanf(" %d", &key);
+            getchar();
+            scanf("%d", &key);
             deleteElementBST(tree, key);
             break;
         case 3:
