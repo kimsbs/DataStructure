@@ -167,6 +167,7 @@ int removeVertexLG(LinkedGraph* pGraph, int vertexID)
             removeEdgeLG(pGraph, to, vertexID);
         curr = next;
     }
+    pGraph->pVertex[vertexID] = NOT_USED;
     return (TRUE);
 }
 
@@ -178,6 +179,7 @@ int removeEdgeLG(LinkedGraph* pGraph, int fromVertexID, int toVertexID)
     deleteGraphNode(pGraph->ppAdjEdge[fromVertexID], toVertexID);
     if(pGraph->graphType == GRAPH_UNDIRECTED)
         deleteGraphNode(pGraph->ppAdjEdge[toVertexID], fromVertexID);
+    pGraph->currentEdgeCount--;
     return (TRUE);
 }
 

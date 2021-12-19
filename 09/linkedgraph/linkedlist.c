@@ -69,7 +69,6 @@ int removeLLElement(LinkedList* pList, int VertexID)
         next->pLLink = front;
     }
     free(tmp);
-    tmp = 0;
     return (TRUE);
 }
 
