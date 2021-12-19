@@ -1,6 +1,24 @@
 #ifndef _GRAPH_ADJLIST_
 #define _GRAPH_ADJLIST_
 
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+
+typedef struct ListNodeType
+{
+	int data;
+	int	weight;
+	struct ListNodeType* pLLink;
+	struct ListNodeType* pRLink;
+} ListNode;
+
+typedef struct LinkedListType
+{
+	ListNode *frontNode;
+	ListNode *rearNode;
+} LinkedList;
+
 typedef struct LinkedGraphType
 {
 	int maxVertexCount;		// 최대 노드 개수
@@ -10,6 +28,15 @@ typedef struct LinkedGraphType
 	LinkedList** ppAdjEdge;	// 간선 저장을 위한 연결 리스트 (포인터)의 배열
 	int *pVertex;			// 노드 저장을 위한 1차원 배열
 } LinkedGraph;
+
+// 리스트
+LinkedList* createLinkedList();
+int addLLElement(LinkedList* pList, ListNode element);
+int removeLLElement(LinkedList* pList, int VertexID);
+ListNode* getLLElement(LinkedList* pList, int VertexID);
+
+void clearLinkedList(LinkedList* pList);
+void deleteLinkedList(LinkedList* pList);
 
 // 그래프 생성
 LinkedGraph* createLinkedGraph(int maxVertexCount);
@@ -37,7 +64,6 @@ int removeVertexLG(LinkedGraph* pGraph, int vertexID);
 // 간선 제거
 int removeEdgeLG(LinkedGraph* pGraph, int fromVertexID, int toVertexID);
 void deleteGraphNode(LinkedList* pList, int delVertexID);
-int findGraphNodePosition(LinkedList* pList, int vertexID);
 
 // 간선 개수 반환
 int getEdgeCountLG(LinkedGraph* pGraph);
@@ -53,6 +79,36 @@ int getGraphTypeLG(LinkedGraph* pGraph);
 
 // 그래프 정보 출력
 void displayLinkedGraph(LinkedGraph* pGraph);
+
+void deleteLinkedGraph(LinkedGraph* pGraph);
+
+
+//제거
+int removeVertexLG(LinkedGraph* pGraph, int vertexID);
+
+// 간선 제거
+int removeEdgeLG(LinkedGraph* pGraph, int fromVertexID, int toVertexID);
+void deleteGraphNode(LinkedList* pList, int delVertexID);
+
+// 간선 개수 반환
+int getEdgeCountLG(LinkedGraph* pGraph);
+
+// 노드 개수 반환
+int getVertexCountLG(LinkedGraph* pGraph);
+
+// 최대 노드 개수 반환
+int getMaxVertexCountLG(LinkedGraph* pGraph);
+
+// 그래프 종류 반환.
+int getGraphTypeLG(LinkedGraph* pGraph);
+
+// 그래프 정보 출력
+void displayLinkedGraph(LinkedGraph* pGraph);
+
+void deleteLinkedGraph(LinkedGraph* pGraph);
+
+void BFS_graph(LinkedGraph *pGraph, int VertexID);
+
 #endif
 
 #ifndef _COMMON_GRAPH_DEF_

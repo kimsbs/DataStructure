@@ -1,5 +1,8 @@
 #ifndef _GRAPH_ADJMATRIX_
 #define _GRAPH_ADJMATRIX_
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
 
 typedef struct ArrayGraphType
 {
@@ -38,6 +41,7 @@ int removeEdgeAG(ArrayGraph* pGraph, int fromVertexID, int toVertexID);
 
 // 그래프 정보 출력
 void displayArrayGraph(ArrayGraph* pGraph);
+
 #endif
 
 #ifndef _COMMON_GRAPH_DEF_
