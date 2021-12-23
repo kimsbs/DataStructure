@@ -1,3 +1,4 @@
+#include "linkedqueue.h"
 #include "simutil.h"
 
 // 고객 도착 큐에 고객 추가.
@@ -126,21 +127,21 @@ int     main(void)
     pWaintQueue = createLinkedQueue();
 
     insertCutomer(0, 3, pArrivalQueue);
-    insertCutomer(1, 4, pArrivalQueue);
+    //insertCutomer(1, 4, pArrivalQueue);
     insertCutomer(2, 2, pArrivalQueue);
     insertCutomer(4, 1, pArrivalQueue);
     insertCutomer(6, 1, pArrivalQueue);
     insertCutomer(8, 3, pArrivalQueue);
     
     doing = NULL;
-    for(int i = 0 ; i <20 ; i++)
+    for(int i = 0 ; i <15 ; i++)
     {
         processArrival(i, pArrivalQueue, pWaintQueue);
         if(doing)
             doing = processServiceNodeEnd(i, doing, &usercount, &waittime);
         if(!doing)
             doing = processServiceNodeStart(i, pWaintQueue);
-        printWaitQueueStatus(i, pWaintQueue);
+        //printWaitQueueStatus(i, pWaintQueue);
     }
     printReport(pWaintQueue, usercount, waittime);
     if(doing)

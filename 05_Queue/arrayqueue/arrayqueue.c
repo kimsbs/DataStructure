@@ -37,7 +37,7 @@ ArrayQueueNode *dequeueAQ(ArrayQueue* pQueue)
     if(!pQueue || isArrayQueueEmpty(pQueue))
         return (FALSE);
     node = &pQueue->pElement[front];
-    pQueue->pElement[front].data = '\0';
+    //pQueue->pElement[front].data = '\0';
     pQueue->front = (front + 1) % pQueue->maxElementCount;
     pQueue->currentElementCount--;
     return (node);

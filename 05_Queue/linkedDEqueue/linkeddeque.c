@@ -182,14 +182,12 @@ void    loop()
         {
         case 1:
             printf("data : ");
-            getchar();
             scanf("%c", &node0.data);
             insertFrontLD(pDeque, node0);
             displayDeque(pDeque);
             break;
         case 2:
             printf("data : ");
-            getchar();
             scanf("%c", &node0.data);
             insertRearLD(pDeque, node0);
             displayDeque(pDeque);

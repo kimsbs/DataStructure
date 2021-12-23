@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "mazesolve.h": "c",
+        "linkedstack.h": "c"
+    }
+}
