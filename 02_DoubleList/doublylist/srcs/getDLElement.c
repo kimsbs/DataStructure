@@ -6,11 +6,11 @@ DoublyListNode* getDLElement(DoublyList* pList, int position)
   DoublyListNode *move;
   int cnt = 0;
 
-  //position ¿¹¿ÜÃ³¸®
+  //position ï¿½ï¿½ï¿½ï¿½Ã³ï¿½ï¿½
   if (position < 0 ||
       position >= pList->currentElementCount)
       return (FALSE);
-  //¼øÈ¸ÇÒ ³ëµå
+  //ï¿½ï¿½È¸ï¿½ï¿½ ï¿½ï¿½ï¿½
   move = pList->headerNode.pRLink;
 
   while (cnt < position)

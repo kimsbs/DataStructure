@@ -29,14 +29,13 @@ int addDLElement(DoublyList* pList, int position, DoublyListNode element)
   else
   {
     //����Ʈ�� ������� �������, position�� 0�̾ getDLElemet�� �� left�� ���� ��尡�־ ����.
-    next = getDLElement(pList, position);
-    prev = next->pLLink;
+    prev = getDLElement(pList, position - 1);
+    next = prev->pRLink;
     new_node->pLLink = prev;
     new_node->pRLink = next;
     prev->pRLink = new_node;
     next->pLLink = new_node;
   }
   pList->currentElementCount++;
-
   return (TRUE);
 }
